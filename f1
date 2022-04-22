@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('continous download') {
+            steps {
+                git 'https://github.com/ManfredWind/deploying-spring-boot-as-war-on-tomcat.git'
+            }
+        }
+        stage('continous build') {
+            steps {
+                sh 'mvn install'
+            }
+        }
+         stage('continous depolyment') {
+            steps {
+                echo '/root/.jenkins/workspace'
+            }
+        }
+    }
+}
